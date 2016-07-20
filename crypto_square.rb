@@ -1,6 +1,5 @@
 require 'pry'
 class Crypto
-  attr_accessor :normalize_plaintext
   def initialize(text)
     @text = text
   end
@@ -45,6 +44,7 @@ class Crypto
     else
       siz = size - 2
     end
+    
     arr = []
     str = ciphertext
     remainder = ciphertext.length % size
@@ -61,7 +61,3 @@ class Crypto
   end
 
 end
-
-# when there is a remainder after dividing by size, i need to 
-# if ciphertext.length % size != 0
-
