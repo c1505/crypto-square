@@ -40,9 +40,20 @@ class Crypto
   end
 
   def normalize_ciphertext
-    siz = size - 2
+    if size < 3
+      siz = 1
+    else
+      siz = size - 2
+    end
     arr = []
     str = ciphertext
+    remainder = ciphertext.length % size
+    remainder.times do 
+      arr << str.slice!(0..siz)
+    end
+    if remainder != 0 
+      siz -= 1
+    end
     until str == ""
       arr << str.slice!(0..siz)
     end
@@ -50,4 +61,7 @@ class Crypto
   end
 
 end
+
+# when there is a remainder after dividing by size, i need to 
+# if ciphertext.length % size != 0
 
